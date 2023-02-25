@@ -24,19 +24,12 @@ Author:
 ```
 ### ⇨  Install Script Di Termux
 ```
-$ termux-setup-storage  
-   • Enter  
-   • Ketik y Atau Pilih Izinkan
-$ termux-change-repo
-$  • Enter
-$ pkg update && pkg upgrade -y
-$ termux-change-repo
-$  • Enter
-$ pkg install python git -y
-$ git clone https://github.com/Shishigami-X/Facebook-Toolls
-$ cd Facebook-Tools
-$ pip3 install -r requirements.txt
-$ git pull
+termux-change-repo
+pkg install python git -y
+git clone https://github.com/Shishigami-X/Facebook-Toolls
+cd Facebook-Toolls
+pip3 install -r requirements.txt
+git pull
 ```
 * **Untuk Jalankan Script Bisa DiKetik :(To run the script, you can type:)**
 * ```python "File Yang Ingin Di Jalankan"```
@@ -49,3 +42,13 @@ $ git pull
 
 ** DON'T FORGET TO GIVE STARS **
 </details>
+
+# Facebook-Toolls  
+>Features :  
+```- Auto Chat Messenger```  
+```- Auto Post Image Facebook```  
+```- Auto Unfriend Based On Interaction```  
+```- Facebook ID Dumper```  
+```- Generate Token Facebook```  
+```- Post Privacy Changer```  
+```- Facebook Video Downloader```
