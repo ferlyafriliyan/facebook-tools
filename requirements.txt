@@ -4,3 +4,6 @@ rich
 bs4
 pycryptodome
 pyfiglet
+colorama
+futures
+stdiomask
