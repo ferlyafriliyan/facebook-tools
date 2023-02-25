@@ -23,7 +23,7 @@ Author:
 [✯] Login Cookies   
 ```
 ### ⇨  Install Script Di Termux
-```
+```python
 termux-change-repo
 pkg install python git -y
 git clone https://github.com/Shishigami-X/Facebook-Toolls
