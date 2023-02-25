@@ -33,13 +33,14 @@ $ pkg update && pkg upgrade -y
 $ termux-change-repo
 $  • Enter
 $ pkg install python git -y
-$ git clone https://github.com/Shishigami-X/Facebook-Tools
+$ git clone https://github.com/Shishigami-X/Facebook-Toolls
 $ cd Facebook-Tools
 $ pip3 install -r requirements.txt
 $ git pull
 ```
 * **Untuk Jalankan Script Bisa DiKetik :(To run the script, you can type:)**
-* ```python "FILE YANG INGIN DI JALANKAN"```
+* ```python "File Yang Ingin Di Jalankan"```
+* ``` Contoh :python dump-id.py ```
 
 * **Untuk Stop Script Tekan : (To Stop Script Press :)**
 * ```CTRL + Z```
