@@ -43,7 +43,7 @@ git pull
 ** DON'T FORGET TO GIVE STARS **
 </details>
 
-# Facebook-Toolls  
+# Facebook-Tools  
 >Features :  
 ```- Auto Chat Messenger```  
 ```- Auto Post Image Facebook```  
@@ -53,5 +53,5 @@ git pull
 ```- Post Privacy Changer```  
 ```- Facebook Video Downloader```
 
-### Tampilan Menu
+### Tampilan
 ![template](https://github.com/Shishigami-X/Facebook-Toolls/blob/main/assets/320306225_1559768411167621_7271697823235979333_n.jpg)
