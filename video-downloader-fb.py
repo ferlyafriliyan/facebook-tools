@@ -1,4 +1,9 @@
-#--> Import Module
+# ------ [ Gw Cuma Perecode Biasa Bang!!! ] ------ #
+Author    = 'Afriliyan Ferly Shishigami X'
+Facebook  = 'Facebook.com/AfriliyanFerly.Shishigami.X'
+Instagram = 'Instagram.com/afriliyanferlly_shishigami'
+
+# ------ [ Import Module !!! ] ------ #
 import os, sys, requests, bs4, re, time, datetime, shutil
 from bs4 import BeautifulSoup as bs
 try: import moviepy.editor as mv
