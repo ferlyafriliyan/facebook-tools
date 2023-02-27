@@ -4,6 +4,7 @@ Version = 0.1
 Facebook = 'Facebook.com/AfriliyanFerly.Shishigami.X'
 Instagram = 'Instagram.com/afriliyanferlly_shishigami'
 
+# ------ [ Import Module !!! ] ------ #
 import os, sys, requests, re, bs4
 from bs4 import BeautifulSoup as bs
 
