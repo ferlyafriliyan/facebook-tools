@@ -19,8 +19,8 @@ Author:
 ```python
 termux-change-repo
 pkg install python git -y
-git clone https://github.com/Shishigami-X/Facebook-Toolls
-cd Facebook-Toolls
+git clone https://github.com/Shishigami-X/Facebook-Tools
+cd Facebook-Tools
 pip3 install -r requirements.txt
 git pull
 ```
