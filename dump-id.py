@@ -1,10 +1,10 @@
-# ------ [ Gw Cuma Perecode Biasa Bang!!! ] ------ #
+#--> Author
 Author = 'Afriliyan Ferly Shishigami X'
 Version = 0.1
-Facebook = 'Facebook.com/AfriliyanFerly.Shishigami.X'
+Facebook = 'Facebook.com/Denventa.Xayonara.Team.UnlimitedARMY'
 Instagram = 'Instagram.com/afriliyanferlly_shishigami'
 
-# ------ [ Import Module !!! ] ------ #
+#--> Import Module
 import os, sys, requests, bs4, re, time, datetime, random
 from bs4 import BeautifulSoup as bs
 
@@ -94,9 +94,11 @@ class login:
             self.cookie     = {'cookie':open('login/cookie.json','r').read()}
             self.token_eaag = open('login/token_eaag.json','r').read()
             self.token_eaab = open('login/token_eaab.json','r').read()
+            self.token_eaaj = open('login/token_eaaj.json','r').read()
             language(self.cookie)
             req1 = self.xyz.get('https://graph.facebook.com/me?fields=name,id&access_token=%s'%(self.token_eaag),cookies=self.cookie).json()['name']
             req2 = self.xyz.get('https://graph.facebook.com/me/friends?fields=summary&limit=0&access_token=%s'%(self.token_eaab),cookies=self.cookie).json()['summary']['total_count']
+            req3 = self.xyz.get('https://graph.facebook.com/me?fields=friends.limit(0).fields(id,name,birthday)&access_token=%s'%(self.token_eaaj),cookies=self.cookie).json()['friends']
             clear()
             logo()
         except Exception as e:
@@ -112,17 +114,19 @@ class login:
         ciko = input('Masukkan Cookie : ')
         self.token_eaag = self.generate_token_eaag(ciko)
         self.token_eaab = self.generate_token_eaab(ciko)
+        self.token_eaaj = self.generate_token_eaaj(ciko)
         try:os.mkdir("login")
         except:pass
         open('login/cookie.json','w').write(ciko)
         open('login/token_eaag.json','w').write(self.token_eaag)
         open('login/token_eaab.json','w').write(self.token_eaab)
+        open('login/token_eaaj.json','w').write(self.token_eaaj)
         self.cek_cookies()
     def generate_token_eaag(self,cok):
         url = 'https://business.facebook.com/business_locations'
         req = self.xyz.get(url,cookies={'cookie':cok})
         tok = re.search('(\["EAAG\w+)', req.text).group(1).replace('["','')
-        return(tok)
+        return(str(tok))
     def generate_token_eaab(self,cok):
         url = 'https://www.facebook.com/adsmanager/manage/campaigns'
         req = self.xyz.get(url,cookies={'cookie':cok})
@@ -130,7 +134,32 @@ class login:
         nek = '%s?act=%s&nav_source=no_referrer'%(url,set)
         roq = self.xyz.get(nek,cookies={'cookie':cok})
         tok = re.search('accessToken="(.*?)"',str(roq.content)).group(1)
-        return(tok)
+        return(str(tok))
+    def generate_token_eaaj(self,cok):
+        self.cookie = {'cookie':cok}
+        apk  = '661587963994814|ffe07cc864fd1dc8fe386229dcb7a05e'
+        data = {'access_token': apk, 'scope': ''}
+        req  = self.xyz.post('https://graph.facebook.com/v16.0/device/login/',data=data).json()
+        cd   = req['code']
+        ucd  = req['user_code']
+        url  = 'https://graph.facebook.com/v16.0/device/login_status?method=post&code=%s&access_token=%s'%(cd,apk)
+        req  = bs(self.xyz.get('https://mbasic.facebook.com/device',cookies=self.cookie).content,'html.parser')
+        raq  = req.find('form',{'method':'post'})
+        dat  = {'jazoest' : re.search('name="jazoest" type="hidden" value="(.*?)"',str(raq)).group(1), 'fb_dtsg' : re.search('name="fb_dtsg" type="hidden" value="(.*?)"',str(req)).group(1), 'qr' : '0', 'user_code' : ucd}
+        rel  = 'https://mbasic.facebook.com' + raq['action']
+        pos  = bs(self.xyz.post(rel,data=dat,cookies=self.cookie).content,'html.parser')
+        dat  = {}
+        raq  = pos.find('form',{'method':'post'})
+        for x in raq('input',{'value':True}):
+            try:
+                if x['name'] == '__CANCEL__' : pass
+                else: dat.update({x['name']:x['value']})
+            except Exception as e: pass
+        rel = 'https://mbasic.facebook.com' + raq['action']
+        pos = bs(self.xyz.post(rel,data=dat,cookies=self.cookie).content,'html.parser')
+        req = self.xyz.get(url,cookies=self.cookie).json()
+        tok = req['access_token']
+        return(str(tok))
 
 #--> Menu Utama
 class main_menu:
@@ -221,6 +250,7 @@ class dump_friendlist:
         self.cookie      = {'cookie':open('login/cookie.json','r').read()}
         self.token_eaag  = open('login/token_eaag.json','r').read()
         self.token_eaab  = open('login/token_eaab.json','r').read()
+        self.token_eaaj  = open('login/token_eaaj.json','r').read()
         self.main()
     def main(self):
         print('Banyak ID, Pisahkan Dgn (,)')
@@ -245,16 +275,16 @@ class dump_friendlist:
     def cek(self,id):
         try: 
             nama  = str(self.xyz.get('https://graph.facebook.com/%s?fields=name&access_token=%s'%(id,self.token_eaag),cookies=self.cookie).json()['name'])
-            teman = str(self.xyz.get('https://graph.facebook.com/%s/friends?fields=summary&limit=0&access_token=%s'%(id,self.token_eaab),cookies=self.cookie).json()['summary']['total_count'])
+            teman = str(self.xyz.get('https://graph.facebook.com/%s?fields=friends.limit(0).fields(id,name,birthday)&access_token=%s'%(id,self.token_eaaj),cookies=self.cookie).json()['friends']['summary']['total_count'])
             print(' • %s --> %s Teman'%(nama,teman))
         except Exception as e:
             print(' • %s --> Kesalahan/Private'%(id))
             self.fail.append(id)
     def requ(self,id):
-        url = 'https://graph.facebook.com/%s/friends?fields=id,name&limit=5000&access_token=%s'%(id,self.token_eaab)
+        url = 'https://graph.facebook.com/%s?fields=friends.limit(5000).fields(id,name,birthday)&access_token=%s'%(id,self.token_eaaj)
         try:
             req = self.xyz.get(url,cookies=self.cookie).json()
-            for y in req['data']:
+            for y in req['friends']['data']:
                 try:
                     id, nama = y['id'], y['name']
                     format = '%s%s%s'%(id,self.pisah,nama)
