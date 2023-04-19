@@ -1,7 +1,7 @@
-# ------ [ Gw Cuma Perecode Biasa Bang!!! ] ------ #
-Author = 'Afriliyan Ferly Sishigami X'
+# ------ [ Denventa ] ------ #
+Author = 'Denventa Afriliyan Ferly Sishigami X'
 Version = 0.1
-Facebook = 'Facebook.com/AfriliyanFerly.Shishigami.X'
+Facebook = 'Facebook.com/Denventa.Xayonara.Team.UnlimitedARMY'
 Instagram = 'Instagram.com/afriliyanferlly_shishigami'
 
 ###----------[ MODULES ]---------- ###
