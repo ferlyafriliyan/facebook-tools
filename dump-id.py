@@ -1,5 +1,5 @@
-#--> Author
-Author = 'Afriliyan Ferly Shishigami X'
+# ------ [ Denventa ] ------ #
+Author = 'Denventa Afriliyan Ferly Sishigami X'
 Version = 0.1
 Facebook = 'Facebook.com/Denventa.Xayonara.Team.UnlimitedARMY'
 Instagram = 'Instagram.com/afriliyanferlly_shishigami'
