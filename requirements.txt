@@ -1,10 +1,12 @@
-requests
-mechanize
 rich
 bs4
-pycryptodome
-pyfiglet
-colorama
+mechanize
+requests
 futures
+pycryptodome
+pystyle
+fake_useragent
 stdiomask
+inquirer
+pyfiglet
 moviepy
