@@ -26,17 +26,11 @@ Author:
 ```python
 termux-change-repo
 pkg install python git -y
-git clone https://github.com/Dvanmeploph/facebook-tools
+git clone https://github.com/Itsmeafriliyan/facebook-tools
 cd facebook-tools
 pip3 install -r requirements.txt
 git pull
 ```
-* **Untuk Jalankan Script Bisa DiKetik :(To run the script, you can type:)**
-* ```python "File Yang Ingin Di Jalankan"```
-* ``` Contoh :python dump-id.py ```
-
-* **Untuk Stop Script Tekan : (To Stop Script Press :)**
-* ```CTRL + Z```
 
 ** JANGAN LUPA KASIH BINTANG **
 
@@ -52,6 +46,3 @@ git pull
 ```- Generate Token Facebook```  
 ```- Post Privacy Changer```  
 ```- Facebook Video Downloader```
-
-### Tampilan Dump ID Facebook
-![template](https://github.com/Denventa/facebook-tools/blob/main/assets/320306225_1559768411167621_7271697823235979333_n.jpg)
