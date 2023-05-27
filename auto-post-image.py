@@ -1,4 +1,4 @@
-# ------ [ Gw Cuma Perecode Biasa Bang!!! ] ------ #
+# ------ [ Denventa ] ------ #
 Author = 'Afriliyan Ferly Shishigami X'
 Version = 0.1
 Facebook = 'Facebook.com/AfriliyanFerly.Shishigami.X'
