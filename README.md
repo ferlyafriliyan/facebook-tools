@@ -6,7 +6,7 @@ Welcome
   <summary><b>More information</b></summary>
 
 #### ★ Social Accounts ★
-<a href="https://www.facebook.com/100013275378835"><img src="https://raw.githubusercontent.com/Dumai-991/Dumai-991/main/Image/images.png" alt="alt text" width="75" height="75"></a>
+<a href="https://www.facebook.com/freya.xyz"><img src="https://raw.githubusercontent.com/Dumai-991/Dumai-991/main/Image/images.png" alt="alt text" width="75" height="75"></a>
 ```
 Terima Kasih Kepada
 - Dapunta Khurayra X
@@ -26,7 +26,7 @@ Author:
 ```python
 termux-change-repo
 pkg install python git -y
-git clone https://github.com/Itsmeafriliyan/facebook-tools
+git clone https://github.com/Livian-xyz/facebook-tools
 cd facebook-tools
 pip3 install -r requirements.txt
 git pull
