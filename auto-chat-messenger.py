@@ -1,7 +1,8 @@
-# ------ [ Denventa ] ------ #
-Author = 'Denventa Afriliyan Ferly Sishigami X'
+# ------ [ Author & Creator ] ------ #
+Developer = 'Dvanmeploph Ferly Afriliyan'
+Author = 'Dapunta Adyapaksi R.'
 Version = 0.1
-Facebook = 'Facebook.com/Denventa.Xayonara.Team.UnlimitedARMY'
+Facebook = 'Facebook.com/freya.xyz'
 Instagram = 'Instagram.com/afriliyanferlly_shishigami'
 
 # --> Modules
