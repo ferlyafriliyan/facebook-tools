@@ -1,11 +1,3 @@
-# ------ [ Author & Creator ] ------ #
-Developer = 'Dvanmeploph Ferly Afriliyan'
-Author = 'Dapunta Adyapaksi R.'
-Version = 0.1
-Facebook = 'Facebook.com/freya.xyz'
-Instagram = 'Instagram.com/afriliyanferlly_shishigami'
-
-
 #--> Import Module
 import os, sys, requests, bs4, re, time, datetime, shutil
 from bs4 import BeautifulSoup as bs

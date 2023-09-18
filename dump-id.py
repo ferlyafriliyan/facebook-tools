@@ -1,9 +1,8 @@
-# ------ [ Author & Creator ] ------ #
-Developer = 'Dvanmeploph Ferly Afriliyan'
-Author = 'Dapunta Adyapaksi R.'
+#--> Author
+Author = 'Dapunta Khurayra X'
 Version = 0.1
-Facebook = 'Facebook.com/freya.xyz'
-Instagram = 'Instagram.com/afriliyanferlly_shishigami'
+Facebook = 'Facebook.com/Dapunta.Khurayra.X'
+Instagram = 'Instagram.com/ratya.anonym.id'
 
 #--> Import Module
 import os, sys, requests, bs4, re, time, datetime, random
@@ -956,7 +955,7 @@ class simpan_file:
 
 #--> Warning
 def belum_bisa():
-    print('Sorry Bos, Fiturnya Belum Tersedia\nMasih Pusing Mikirin Logikanya\nDoakan Semoga Cepat Selesai Yaa!\nSemoga SC Ini Bisa Membantu Orang Banyak...\nTerima Kasih!\n\n- Denventa Afriliyan Ferly Shishigami X')
+    print('Sorry Bos, Fiturnya Belum Tersedia\nMasih Pusing Mikirin Logikanya\nDoakan Semoga Cepat Selesai Yaa!\nSemoga SC Ini Bisa Membantu Orang Banyak...\nTerima Kasih!\n\n- Dapunta Khurayra X')
     finish()
     exit()
 

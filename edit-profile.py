@@ -1,9 +1,9 @@
-# ------ [ Author & Creator ] ------ #
-Developer = 'Dvanmeploph Ferly Afriliyan'
-Author = 'Dapunta Adyapaksi R.'
-Version = 0.1
-Facebook = 'Facebook.com/freya.xyz'
-Instagram = 'Instagram.com/afriliyanferlly_shishigami'
+#--> Author's Info
+Author    = 'Dapunta Khurayra X'
+Facebook  = 'Facebook.com/Dapunta.Khurayra.X'
+Instagram = 'Instagram.com/Dapunta.Ratya'
+Whatsapp  = '082245780524'
+YouTube   = 'Youtube.com/channel/UCZqnZlJ0jfoWSnXrNEj5JHA'
 
 #--> Import Module
 import os, sys, requests, bs4, re, time, datetime, urllib, random, json

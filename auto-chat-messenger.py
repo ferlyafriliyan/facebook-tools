@@ -1,9 +1,8 @@
-# ------ [ Author & Creator ] ------ #
-Developer = 'Dvanmeploph Ferly Afriliyan'
-Author = 'Dapunta Adyapaksi R.'
+###----------[ AUTHOR ]---------- ###
+Author = 'Dapunta Khurayra X'
 Version = 0.1
-Facebook = 'Facebook.com/freya.xyz'
-Instagram = 'Instagram.com/afriliyanferlly_shishigami'
+Facebook = 'Facebook.com/Dapunta.Khurayra.X'
+Instagram = 'Instagram.com/ratya.anonym.id'
 
 # --> Modules
 import requests,bs4,sys,os,datetime,re,time,json
