@@ -1,13 +1,12 @@
 # Python 3.10
 # Made With Graph & GraphQL Facebook
-# Friendlist Facebook by Dapunta Adyapaksi R.
 
 #--> Author's Info
-__Developer__   = 'Denventa'
-__Facebook__   = 'https://www.facebook.com/profile.php'
-__Instagram__  = 'https://www.instagram.com/afriliyanferlly_shishigami/'
-__Github__        = 'https://www.github.com/ferlyafriliyan'
-__Website_s     = 'https://ferlyafriliyan.vercel.app '
+Author    = 'Dapunta Khurayra X'
+Facebook  = 'Facebook.com/Dapunta.Khurayra.X'
+Instagram = 'Instagram.com/Dapunta.Ratya'
+Whatsapp  = 'Wa.me/6282245780524'
+YouTube   = 'Youtube.com/channel/UCZqnZlJ0jfoWSnXrNEj5JHA'
 
 #--> Import Default Module & Library
 import os, sys, random, time, json, re, concurrent, urllib, shutil
