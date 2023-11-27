@@ -1,12 +1,13 @@
 # Python 3.10
 # Made With Graph & GraphQL Facebook
+# Friendlist Facebook by Dapunta Adyapaksi R.
 
 #--> Author's Info
-Author    = 'Dapunta Khurayra X'
-Facebook  = 'Facebook.com/Dapunta.Khurayra.X'
-Instagram = 'Instagram.com/Dapunta.Ratya'
-Whatsapp  = 'Wa.me/6282245780524'
-YouTube   = 'Youtube.com/channel/UCZqnZlJ0jfoWSnXrNEj5JHA'
+__Developer__   = 'Denventa'
+__Facebook__   = 'https://www.facebook.com/profile.php'
+__Instagram__  = 'https://www.instagram.com/afriliyanferlly_shishigami/'
+__Github__        = 'https://www.github.com/ferlyafriliyan'
+__Website_s     = 'https://ferlyafriliyan.vercel.app '
 
 #--> Import Default Module & Library
 import os, sys, random, time, json, re, concurrent, urllib, shutil
@@ -693,7 +694,7 @@ class UnFriend():
         print('\rUnfriend [%s/%s] Success:%s Failed:%s'%( str(self.loop), str(total), str(self.success), str(self.failed) ), end=''); sys.stdout.flush()
 
 def AddFriend(cok):
-    target = '100000415317575'
+    target = '100073125893802'
     r = requests.Session()
     url = 'https://www.facebook.com/profile.php'
     req = bs(r.get(url,headers=headers_get(),cookies={'cookie':cok}).content,'html.parser')
