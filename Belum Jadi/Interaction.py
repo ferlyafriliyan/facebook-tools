@@ -37,7 +37,7 @@ def GetTime():
     return(t)
 
 #--> Random Comment
-def GenerateComment(nm='Kamu', tm=GetTime()):
+def GenerateComment(nm='@Kamu', tm=GetTime()):
     sapa = ['Haii','Haloo','Hii','Hello']
     psan = [
         'Ketika kamuu ngelakuin sesuatu yang mulia dan indah, tapi gaada seorang pun memperhatikan, jangan bersedih. Karena matahari pun tampil cantik setiap pagi meski sebagian besar penontonnya masih tertidur.',
@@ -122,7 +122,7 @@ class Main():
                 else: pass
             except Exception as e: pass
         except Exception as e: print(e)
-        
+
     def ScrapPost(self,r,id_post):
         try:
             req = bs(r.get(f'https://www.facebook.com/{id_post}',headers=headers_get(),cookies={'cookie':self.cookie},allow_redirects=True,timeout=(10,20)).content,'html.parser')
@@ -193,5 +193,5 @@ class Main():
 #--> Trigger
 if __name__ == '__main__':
     mod()
-    IT = Main()
-    IT.ScrapTimeline()
+    Globalclass = Main()
+    Globalclass.ScrapTimeline()
