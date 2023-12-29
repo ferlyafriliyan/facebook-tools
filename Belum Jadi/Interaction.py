@@ -38,7 +38,7 @@ def GetTime():
 
 #--> Random Comment
 def GenerateComment(nm='Kamu', tm=GetTime()):
-    sapa = ['Haii','Haloo','Hii','Aloo']
+    sapa = ['Haii','Haloo','Hii','Hello']
     psan = [
         'Ketika kamuu ngelakuin sesuatu yang mulia dan indah, tapi gaada seorang pun memperhatikan, jangan bersedih. Karena matahari pun tampil cantik setiap pagi meski sebagian besar penontonnya masih tertidur.',
         'Jomblo boleh, kesepian jangan. Sini, biar kamu enggak kesepian di %s yang cerah ini, aku ikhlas, enggak apa-apa biar aku saja yang ngucapin selamat %s'%(GetTime().lower(),GetTime().lower()),
@@ -61,7 +61,7 @@ def GenerateComment(nm='Kamu', tm=GetTime()):
     op  = random.choice(sapa)
     psn = random.choice(psan)
     sp  = random.choice(supp)
-    return(f'{op} {nm}, Selamat {tm}!\n{psn}\n{sp}\n\nKomentar Di Tulis Oleh Bot\nPukul : {datetime.datetime.now().strftime("%H:%M:%S")}')
+    return(f'{op} {nm}, Selamat {tm}!\n{psn}\n{sp}\n\nKomentar Ditulis Oleh Bot\n[ Pukul {datetime.datetime.now().strftime("%H:%M:%S")} WIB ]\n- {datetime.datetime.now().strftime("%A")}, {datetime.datetime.now().strftime("%d %B %Y")} -')
 
 #--> Get Data
 def GetData(req):
@@ -155,11 +155,11 @@ class Main():
             dta.update({'fb_api_caller_class':'RelayModern','fb_api_req_friendly_name':'CometUFIFeedbackReactMutation','variables':json.dumps(var),'server_timestamps':True,'doc_id':'6623712531077310'})
             pos = r.post('https://www.facebook.com/api/graphql/',data=dta,headers=headers_post(),cookies={'cookie':self.cookie},allow_redirects=True).json()
             if "'can_viewer_react': True" in str(pos) and dta['__user'] in str(pos):
-                return('Berhasil Memberikan %s React'%(tp_react))
+                return('Berhasil Memberikan Reaction\nType React : %s'%(tp_react))
             else:
-                return('Gagal Memberikan %s React'%(tp_react))
+                return('Gagal Memberikan React %s'%(tp_react))
         except Exception as e:
-            return('Gagal Memberikan %s React'%(tp_react))
+            return('Gagal Memberikan React %s'%(tp_react))
     
     def CommentPost(self,r,dta,session_id,feedback_id,encrypted_tracking,cli,nama,id_akun):
         try:
@@ -185,7 +185,7 @@ class Main():
                 if 'Edit atau hapus ini' in str(pos) and 'comment_create' in str(pos): b = 1
                 else: b = 0
             except Exception as e: b = 0
-            if a==1 and b==1: return('Berhasil Berkomentar\n%s'%(kom))
+            if a==1 and b==1: return('Berhasil Berkomentar\nComment:\n%s'%(kom))
             else: return('Gagal Berkomentar')
         except Exception as e:
             return('Gagal Berkomentar')
