@@ -47,7 +47,14 @@ def GenerateComment(nm='@Kamu', tm=GetTime()):
         'Setiap manusia punya kesempatan baru, jangan kamu terpaku dengan masa lalumu. Lihat ke luar dan syukuri segala nikmat yang diberikan oleh Tuhan.',
         'Lupakan apa yang tidak dapat kamu capai kemarin dan pikirkan hal-hal indah yang kamu miliki hari ini.',
         'Teman lama pergi, teman baru datang. Seperti hari, yang lama berlalu dan pagi pun menjelang. Yang paling penting adalah bagaimana membuatnya berarti.',
-        'Kamu tidak harus menjadi hebat dulu untuk memulai, tapi kamu perlu memulai untuk menjadi hebat']
+        'Kamu tidak harus menjadi hebat dulu untuk memulai, tapi kamu perlu memulai untuk menjadi hebat',
+        'Selamat Tahun Baru, semoga tahun baru ini membawa kebahagiaan dan kesuksesan untukmu! 🎉🥳',
+        'Terima kasih atas semua kenangan indah di tahun lalu. Mari sambut tahun baru dengan semangat baru dan harapan yang tinggi!',
+        'Semoga tahun ini penuh dengan cinta, kebahagiaan, dan pencapaian baru. Selamat Tahun Baru!',
+        'Jangan bersedih tentang hal-hal yang terjadi di tahun lalu. Mari kita rayakan awal yang baru dan optimis untuk masa depan yang lebih baik!',
+        'Selamat datang tahun baru! Semoga setiap hari membawa kebahagiaan dan kesuksesan untukmu.',
+        'Tahun baru, kesempatan baru. Ayo wujudkan impian-impianmu dan capai tujuan yang belum tercapai!',
+        'Terima kasih atas dukungan dan persahabatanmu di tahun lalu. Mari kita menjalani tahun baru ini bersama-sama!']
     love = ['❤️','💙','🧡','💚','💛','💜','🖤']
     supp = [
         'Semangat Yaa Menjalani Hari-Harinyaa %s'%(random.choice(love)),
