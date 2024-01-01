@@ -145,9 +145,9 @@ class Main():
             except Exception as e: encrypted_tracking = re.findall('"encrypted_tracking":"(.*?)"',str(req))[0]
             st_react = self.ReactPost(r,dta,session_id,feedback_id,encrypted_tracking)
             st_komen = self.CommentPost(r,dta,session_id,feedback_id,encrypted_tracking,cli,nama,id_akun)
-            print('Nama    : %s'%(nama))
-            print('ID Akun : %s'%(id_akun))
-            print('ID Post : %s'%(id_post))
+            print('[•] Nama    : %s'%(nama))
+            print('[•] ID Akun : %s'%(id_akun))
+            print('[•] ID Post : %s'%(id_post))
             #print('Gender  : %s'%(gender))
             print(st_react)
             print(st_komen)
@@ -162,7 +162,7 @@ class Main():
             dta.update({'fb_api_caller_class':'RelayModern','fb_api_req_friendly_name':'CometUFIFeedbackReactMutation','variables':json.dumps(var),'server_timestamps':True,'doc_id':'6623712531077310'})
             pos = r.post('https://www.facebook.com/api/graphql/',data=dta,headers=headers_post(),cookies={'cookie':self.cookie},allow_redirects=True).json()
             if "'can_viewer_react': True" in str(pos) and dta['__user'] in str(pos):
-                return('Berhasil Memberikan Reaction\nType React : %s'%(tp_react))
+                return('Berhasil Memberikan Reaction\n[+] Type React : %s'%(tp_react))
             else:
                 return('Gagal Memberikan React %s'%(tp_react))
         except Exception as e:
@@ -192,7 +192,7 @@ class Main():
                 if 'Edit atau hapus ini' in str(pos) and 'comment_create' in str(pos): b = 1
                 else: b = 0
             except Exception as e: b = 0
-            if a==1 and b==1: return('Berhasil Berkomentar\nComment:\n%s'%(kom))
+            if a==1 and b==1: return('Berhasil Berkomentar\n[+] Comment:\n%s'%(kom))
             else: return('Gagal Berkomentar')
         except Exception as e:
             return('Gagal Berkomentar')
