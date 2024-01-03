@@ -30,45 +30,46 @@ def clear(): os.system('clear' if 'linux' in sys.platform.lower() else 'cls')
 def GetTime():
     skr = datetime.datetime.now()
     jam = int(skr.strftime('%H'))
-    if    3<jam<=10 : t = 'Pagi'
-    elif 10<jam<=14 : t = 'Siang'
-    elif 14<jam<=18 : t = 'Sore'
-    elif 18<jam<=24 or 0<=jam<=3 : t = 'Malam'
+    if    3<jam<=10 : t = 'Morning'
+    elif 10<jam<=14 : t = 'Afternoon'
+    elif 14<jam<=18 : t = 'Evening'
+    elif 18<jam<=24 or 0<=jam<=3 : t = 'Night'
     return(t)
 
+
 #--> Random Comment
-def GenerateComment(nm='@Kamu', tm=GetTime()):
+def GenerateComment(nm='@You', tm=GetTime()):
     sapa = ['Haii','Haloo','Hii','Hello']
-    psan = [
-        'Ketika kamuu ngelakuin sesuatu yang mulia dan indah, tapi gaada seorang pun memperhatikan, jangan bersedih. Karena matahari pun tampil cantik setiap pagi meski sebagian besar penontonnya masih tertidur.',
-        'Jomblo boleh, kesepian jangan. Sini, biar kamu enggak kesepian di %s yang cerah ini, aku ikhlas, enggak apa-apa biar aku saja yang ngucapin selamat %s'%(GetTime().lower(),GetTime().lower()),
-        'Pemimpi sepertimu tidak butuh ucapan selamat %s, yang kamu butuhkan adalah alarm besar dan teman menyebalkan seperti ku untuk membuatmu terbangun dari mimpimu.'%(GetTime().lower()),
-        'Jangan khawatir tentang kegagalan, khawatirlah tentang peluang yang kamu lewatkan ketika kamu bahkan tidak mencoba.',
-        'Setiap manusia punya kesempatan baru, jangan kamu terpaku dengan masa lalumu. Lihat ke luar dan syukuri segala nikmat yang diberikan oleh Tuhan.',
-        'Lupakan apa yang tidak dapat kamu capai kemarin dan pikirkan hal-hal indah yang kamu miliki hari ini.',
-        'Teman lama pergi, teman baru datang. Seperti hari, yang lama berlalu dan pagi pun menjelang. Yang paling penting adalah bagaimana membuatnya berarti.',
-        'Kamu tidak harus menjadi hebat dulu untuk memulai, tapi kamu perlu memulai untuk menjadi hebat',
-        'Selamat Tahun Baru, semoga tahun baru ini membawa kebahagiaan dan kesuksesan untukmu! 🎉🥳',
-        'Terima kasih atas semua kenangan indah di tahun lalu. Mari sambut tahun baru dengan semangat baru dan harapan yang tinggi!',
-        'Semoga tahun ini penuh dengan cinta, kebahagiaan, dan pencapaian baru. Selamat Tahun Baru!',
-        'Jangan bersedih tentang hal-hal yang terjadi di tahun lalu. Mari kita rayakan awal yang baru dan optimis untuk masa depan yang lebih baik!',
-        'Selamat datang tahun baru! Semoga setiap hari membawa kebahagiaan dan kesuksesan untukmu.',
-        'Tahun baru, kesempatan baru. Ayo wujudkan impian-impianmu dan capai tujuan yang belum tercapai!',
-        'Terima kasih atas dukungan dan persahabatanmu di tahun lalu. Mari kita menjalani tahun baru ini bersama-sama!']
+    messages = [
+        'When you do something noble and beautiful, but no one notices, don\'t be sad. Because the sun also looks beautiful every morning even though most of its audience is still asleep.',
+        'Being single is fine, but being lonely isn\'t. Come, so you won\'t be lonely in this bright %s, I sincerely, it\'s okay, let me be the one to say good %s'%(GetTime().lower(),GetTime().lower()),
+        'Dreamers like you don\'t need congratulations %s, what you need is a big alarm and annoying friends like me to wake you up from your dreams.'%(GetTime().lower()),
+        'Don\'t worry about failure, worry about the chances you miss when you don\'t even try.',
+        'Every human has a new opportunity, don\'t be stuck with your past. Look outside and be grateful for all the blessings given by God.',
+        'Forget what you couldn\'t achieve yesterday and think about the beautiful things you have today.',
+        'Old friends leave, new friends come. Like the day, the old one passes and the morning comes. The most important thing is how to make it meaningful.',
+        'You don\'t have to be great to start, but you need to start to be great',
+        'Happy New Year, may this new year bring happiness and success to you! 🎉🥳',
+        'Thank you for all the beautiful memories last year. Let\'s welcome the new year with new spirit and high hopes!',
+        'May this year be filled with love, happiness, and new achievements. Happy New Year!',
+        'Don\'t be sad about the things that happened last year. Let\'s celebrate a new beginning and be optimistic for a better future!',
+        'Welcome, New Year! May every day bring joy and success to you.',
+        'New year, new opportunities. Let\'s make your dreams come true and achieve the goals that haven\'t been achieved!',
+        'Thank you for your support and friendship last year. Let\'s face this new year together!']
     love = ['❤️','💙','🧡','💚','💛','💜','🖤']
-    supp = [
-        'Semangat Yaa Menjalani Hari-Harinyaa %s'%(random.choice(love)),
-        'Tetep Semangat, Jangan Nyerah %s'%(random.choice(love)),
-        'Kalau Kamu Butuh Aku, Aku Disini Kok %s'%(random.choice(love)),
-        'Jangan Merasa Kesepian, Kan Ada Aku Disini %s'%(random.choice(love)),
-        'Jangan Sedih Terus Dong, Kan Aku Jadi Ikutan Sedih %s'%(random.choice(love)),
-        'Kamu Pasti Bisa! Semangatt %s'%(random.choice(love)),
-        'Tenang Ajaa, Aku Support Kamu Terus Kok %s'%(random.choice(love)),
-        'Jangan Nyerah Yaa, Yang Akan Datang Akan Lebih Baik Buatmu %s'%(random.choice(love))]
+    support = [
+        'Stay spirited in facing your days %s'%(random.choice(love)),
+        'Stay spirited, don\'t give up %s'%(random.choice(love)),
+        'If you need me, I\'m here %s'%(random.choice(love)),
+        'Don\'t feel lonely, because I\'m here %s'%(random.choice(love)),
+        'Don\'t be sad all the time, because I\'ll be sad too %s'%(random.choice(love)),
+        'You can do it! Keep going %s'%(random.choice(love)),
+        'Stay calm, I support you all the way %s'%(random.choice(love)),
+        'Don\'t give up, what\'s coming will be better for you %s'%(random.choice(love))]
     op  = random.choice(sapa)
-    psn = random.choice(psan)
-    sp  = random.choice(supp)
-    return(f'{op} {nm}, Selamat {tm}!\n{psn}\n{sp}\n\nKomentar Ditulis Oleh Bot\n[ Pukul {datetime.datetime.now().strftime("%H:%M:%S")} WIB ]\n- {datetime.datetime.now().strftime("%A")}, {datetime.datetime.now().strftime("%d %B %Y")} -')
+    psn = random.choice(messages)
+    sp  = random.choice(support)
+    return(f'{op} {nm}, Good {tm}!\n{psn}\n{sp}\n\nComment Written By Bot\n[ Time {datetime.datetime.now().strftime("%H:%M:%S")} WIB ]\n- {datetime.datetime.now().strftime("%A")}, {datetime.datetime.now().strftime("%d %B %Y")} -')
 
 #--> Get Data
 def GetData(req):
@@ -145,7 +146,7 @@ class Main():
             except Exception as e: encrypted_tracking = re.findall('"encrypted_tracking":"(.*?)"',str(req))[0]
             st_react = self.ReactPost(r,dta,session_id,feedback_id,encrypted_tracking)
             st_komen = self.CommentPost(r,dta,session_id,feedback_id,encrypted_tracking,cli,nama,id_akun)
-            print('[•] Nama    : %s'%(nama))
+            print('[•] Name    : %s'%(nama))
             print('[•] ID Akun : %s'%(id_akun))
             print('[•] ID Post : %s'%(id_post))
             #print('Gender  : %s'%(gender))
