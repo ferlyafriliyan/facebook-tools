@@ -32,6 +32,7 @@ default_ua_windows = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.
 random_ua_windows = lambda : 'Mozilla/5.0 (Windows NT %s.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/%s.%s.%s.%s Safari/537.36'%(rc(['10','11']),rr(110,201),rr(0,10),rr(0,10),rr(0,10))
 headers_get  = lambda i=default_ua_windows : {'Accept':'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7','Accept-Encoding':'gzip, deflate','Accept-Language':'en-US,en;q=0.9','Cache-Control':'max-age=0','Dpr':'1','Pragma':'akamai-x-cache-on, akamai-x-cache-remote-on, akamai-x-check-cacheable, akamai-x-get-cache-key, akamai-x-get-extracted-values, akamai-x-get-ssl-client-session-id, akamai-x-get-true-cache-key, akamai-x-serial-no, akamai-x-get-request-id,akamai-x-get-nonces,akamai-x-get-client-ip,akamai-x-feo-trace','Sec-Ch-Prefers-Color-Scheme':'dark','Sec-Ch-Ua':'','Sec-Ch-Ua-Full-Version-List':'','Sec-Ch-Ua-Mobile':'?0','Sec-Ch-Ua-Model':'','Sec-Ch-Ua-Platform':'','Sec-Ch-Ua-Platform-Version':'','Sec-Fetch-Dest':'document','Sec-Fetch-Mode':'navigate','Sec-Fetch-Site':'none','Sec-Fetch-User':'?1','Upgrade-Insecure-Requests':'1','User-Agent':i}
 headers_post = lambda i=default_ua_windows : {'Accept':'*/*','Accept-Encoding':'gzip, deflate','Accept-Language':'en-US,en;q=0.9','Content-Length':'1545','Content-Type':'application/x-www-form-urlencoded','Dpr':'1','Origin':'https://www.facebook.com','Referer':'https://www.facebook.com','Sec-Ch-Prefers-Color-Scheme':'dark','Sec-Ch-Ua':"",'Sec-Ch-Ua-Full-Version-List':"",'Sec-Ch-Ua-Mobile':'?0','Sec-Ch-Ua-Model':"",'Sec-Ch-Ua-Platform':"",'Sec-Ch-Ua-Platform-Version':"",'Sec-Fetch-Dest':'empty','Sec-Fetch-Mode':'cors','Sec-Fetch-Site':'same-origin','User-Agent':i}
+friendlist = []
 
 #--> Color
 Z = '\x1b[38;5;232m' # Hitam
@@ -135,11 +136,9 @@ class login:
             self.cookie     = {'cookie':open('login/cookie.json','r').read()}
             self.token_eaag = open('login/token_eaag.json','r').read()
             self.token_eaab = open('login/token_eaab.json','r').read()
-            self.token_eaat = open('login/token_eaat.json','r').read()
             language(self.cookie)
             req_eaag = self.xyz.get('https://graph.facebook.com/me?fields=name,id&access_token=%s'%(self.token_eaag),cookies=self.cookie).json()
             req_eaab = self.xyz.get('https://graph.facebook.com/me?fields=name,id&access_token=%s'%(self.token_eaab),cookies=self.cookie).json()['id']
-            req_eaat = self.xyz.get('https://graph.facebook.com/me?fields=name,id&access_token=%s'%(self.token_eaat),cookies=self.cookie).json()['id']
             id_login = req_eaag['id']
             nama_login = req_eaag['name']
             clear()
@@ -191,22 +190,14 @@ class login:
                 print('%s[%s•%s] %sFailed Get EAAB Token'%(M,P,M,P))
                 time.sleep(2)
                 self.insert_cookie()
-            try:
-                self.token_eaat = self.generate_token_eaat(cookie)
-                print('%s[%s•%s] %sSuccess Get EAAT Token'%(H,P,H,P))
-            except Exception as e:
-                print('%s[%s•%s] %sFailed Get EAAT Token'%(M,P,M,P))
-                time.sleep(2)
-                self.insert_cookie()
             try:os.mkdir("login")
             except:pass
             open('login/cookie.json','w').write(cookie)
             open('login/token_eaag.json','w').write(self.token_eaag)
             open('login/token_eaab.json','w').write(self.token_eaab)
-            open('login/token_eaat.json','w').write(self.token_eaat)
             self.cek_cookies()
 
-    #--> Generate Token [EAAG,EAAB,EAAT]
+    #--> Generate Token [EAAG,EAAB]
     def generate_token_eaag(self,cok):
         url = 'https://business.facebook.com/business_locations'
         req = self.xyz.get(url,cookies={'cookie':cok})
@@ -217,13 +208,6 @@ class login:
         nek1 = re.search('window\.location\.replace\("(.*?)"\)',str(req1)).group(1).replace('\\','')
         req2 = bs(self.xyz.get(nek1,cookies={'cookie':cok},allow_redirects=True).content,'html.parser')
         tok  = re.search('accessToken="(.*?)"',str(req2)).group(1)
-        return(tok)
-    def generate_token_eaat(self,cok):
-        re1 = self.xyz.post('https://graph.facebook.com/v16.0/device/login/',data={'access_token':'1348564698517390|007c0a9101b9e1c8ffab727666805038','scope':''}).json()
-        re2 = bs(self.xyz.get('https://m.facebook.com/device',cookies={'cookie':cok},allow_redirects=True).content,'html.parser').find('form',{'method':'post'})
-        po1 = bs(self.xyz.post('https://m.facebook.com'+re2['action'],data={'jazoest':re.search('name="jazoest" type="hidden" value="(.*?)"',str(re2)).group(1),'fb_dtsg':re.search('name="fb_dtsg" type="hidden" value="(.*?)"',str(re2)).group(1),'qr':'0','user_code':re1['user_code']},cookies={'cookie':cok},allow_redirects=True).content,'html.parser').find('form',{'method':'post'})
-        po2 = bs(self.xyz.post('https://m.facebook.com'+po1['action'],data={x['name']:x['value'] for x in po1.find_all('input',{'name':True,'value':True}) if x['name'] != '__CANCEL__'},cookies={'cookie':cok},allow_redirects=True).content,'html.parser')
-        tok = self.xyz.get('https://graph.facebook.com/v16.0/device/login_status?method=post&code=%s&access_token=%s'%(re1['code'],'1348564698517390|007c0a9101b9e1c8ffab727666805038'),cookies={'cookie':cok}).json()['access_token']
         return(tok)
 
 #--> Logout
@@ -242,7 +226,6 @@ class Menu():
             self.cookie     = open('login/cookie.json','r').read()
             self.token_eaag = open('login/token_eaag.json','r').read()
             self.token_eaab = open('login/token_eaab.json','r').read()
-            self.token_eaat = open('login/token_eaat.json','r').read()
             self.file_inter = 'BotFriend/%s'%(file_interaction)
             self.file_mutua = 'BotFriend/%s'%(file_mutual)
             self.file_gende = 'BotFriend/%s'%(file_gender)
@@ -313,7 +296,7 @@ class Menu():
             elif y in ['3','03','c']: self.UnfriendBasedGender()
             elif y in ['4','04','d']: self.UnfriendBasedInteraction()
             else: print(fls); exit()
-        elif x in ['3','03','c']: pass
+        elif x in ['3','03','c']: AddFriend()
         else: print(fls); exit()
     
     def InteractionMenu(self,ch):
@@ -349,7 +332,8 @@ class Menu():
 
     def UnfriendAllFriend(self):
         UF = UnFriend()
-        total_fl, friendlist = GetFriendlist()
+        GetFriendlist(requests.Session(), None)
+        total_fl = str(len(friendlist))
         print('Total Friendlist : %s'%(total_fl) if country=='INDONESIA' else 'Total Friendlist : %s'%(total_fl))
         print('')
         with ThreadPoolExecutor(max_workers=5) as TPE:
@@ -419,13 +403,13 @@ def GetData(req):
     return(dta)
 
 #--> Get Friendlist With Token
-def GetFriendlist():
+def GetFriendlist2():
     friendlist = []
     try:
         cookie = open('login/cookie.json','r').read()
-        token_eaat = open('login/token_eaat.json','r').read()
+        token_eaab = open('login/token_eaab.json','r').read()
         r = requests.Session()
-        req = r.get(f'https://graph.facebook.com/me?fields=friends.fields(id,name,birthday)&access_token={token_eaat}',headers=headers_get(),cookies={'cookie':cookie}).json()
+        req = r.get(f'https://graph.facebook.com/me?fields=friends.fields(id,name,birthday)&access_token={token_eaab}',headers=headers_get(),cookies={'cookie':cookie}).json()
         total_fl = str(req['friends']['summary']['total_count'])
         for x in req['friends']['data']:
             try: bd = x['birthday']
@@ -439,6 +423,24 @@ def GetFriendlist():
         print('Gagal Dump Friendlist\nAkun Spam/Checkpoint' if country=='INDONESIA' else 'Failed To Dump Friendlist\nAccount Spam/Checkpoint')
         exit()
 
+#--> Get Friendlist With Token
+def GetFriendlist(r, after):
+    global friendlist
+    try:
+        cookie = open('login/cookie.json','r').read()
+        token  = open('login/token_eaab.json','r').read()
+        req = r.get('https://graph.facebook.com/me/friends', params={'access_token':token,'after':after,'pretty':'1'}, cookies={'cookies':cookie}).json()
+        for d in req['data']:
+            try:
+                h = '%s|%s'%(d['id'],d['name'])
+                if h in friendlist: pass
+                else: friendlist.append(h); print('\rSedang Mengumpulkan %s Teman'%(str(len(friendlist))),end=''); sys.stdout.flush()
+            except Exception as e: continue
+        after = req['paging']['cursors']['after']
+        GetFriendlist(r, after)
+    except KeyboardInterrupt: print('\rBerhasil Mendeteksi %s Teman'%(str(len(friendlist))))
+    except Exception as e: print('\rBerhasil Mendeteksi %s Teman'%(str(len(friendlist))))
+
 #--> Check Friendlist With GraphQL
 class CheckFriendlistByGraphQL():
 
@@ -449,7 +451,6 @@ class CheckFriendlistByGraphQL():
             self.cookie     = open('login/cookie.json','r').read()
             self.token_eaag = open('login/token_eaag.json','r').read()
             self.token_eaab = open('login/token_eaab.json','r').read()
-            self.token_eaat = open('login/token_eaat.json','r').read()
             self.file_gende = 'BotFriend/%s'%(file_gender)
             self.file_mutua = 'BotFriend/%s'%(file_mutual)
         except Exception as e: login()
@@ -528,7 +529,6 @@ class CheckInteraction():
             self.cookie     = open('login/cookie.json','r').read()
             self.token_eaag = open('login/token_eaag.json','r').read()
             self.token_eaab = open('login/token_eaab.json','r').read()
-            self.token_eaat = open('login/token_eaat.json','r').read()
             self.file_inter = 'BotFriend/%s'%(file_interaction)
         except Exception as e: login()
 
@@ -597,7 +597,6 @@ class UnFriend():
             self.cookie     = open('login/cookie.json','r').read()
             self.token_eaag = open('login/token_eaag.json','r').read()
             self.token_eaab = open('login/token_eaab.json','r').read()
-            self.token_eaat = open('login/token_eaat.json','r').read()
             self.loop = 0
             self.success = 0
             self.failed = 0
@@ -660,7 +659,8 @@ class UnFriend():
             print('Seleksi Teman Berdasar Reaksi/Komentar Terlebih Dahulu!' if country == 'INDONESIA' else 'Select Friend Based On React/Comment First!')
             exit('')
         try:
-            to, fl = GetFriendlist()
+            GetFriendlist(requests.Session(), None)
+            to, fl = str(len(friendlist)), friendlist
             for x in fl:
                 try:
                     if x in self.data_inter: pass
@@ -692,35 +692,112 @@ class UnFriend():
         self.loop += 1
         print('\rUnfriend [%s/%s] Success:%s Failed:%s'%( str(self.loop), str(total), str(self.success), str(self.failed) ), end=''); sys.stdout.flush()
 
-def AddFriend(cok):
-    target = '100073125893802'
-    r = requests.Session()
-    url = 'https://www.facebook.com/profile.php'
-    req = bs(r.get(url,headers=headers_get(),cookies={'cookie':cok}).content,'html.parser')
-    dta = GetData(req)
-    var = {
-        "input":{
-            "attribution_id_v2":"ProfileCometTimelineListViewRoot.react,comet.profile.timeline.list,via_cold_start,1700060250257,939817,190055527696468,",
-            "friend_requestee_ids":[target],
-            "refs":[None],
-            "source":"profile_button",
-            "warn_ack_for_ids":[],
-            "actor_id":dta['__user'],
-            "client_mutation_id":"1"},
-        "scale":1}
-    dta.update({
-        'fb_api_caller_class':'RelayModern',
-        'fb_api_req_friendly_name':'FriendingCometFriendRequestSendMutation',
-        'variables':json.dumps(var),
-        'server_timestamps':True,
-        'doc_id':'7033797416660129'})
-    pos = r.post('https://www.facebook.com/api/graphql/',data=dta,headers=headers_post(),cookies={'cookie':cok}).json()
-    if 'friend_requestees' in str(pos) and 'OUTGOING_REQUEST' in str(pos):
-        print('Success')
-    else:
-        print('Failed')
+#--> AddFriend
+class AddFriend():
 
-#--> Trigger
+    def __init__(self):
+        try:
+            self.cookie     = open('login/cookie.json','r').read()
+            self.token_eaag = open('login/token_eaag.json','r').read()
+            self.token_eaab = open('login/token_eaab.json','r').read()
+            self.loop = 0
+            self.skip = 0
+            self.success = 0
+            self.failed = 0
+        except Exception as e: login()
+        self.MenuAdd()
+
+    def MenuAdd(self):
+        print('[ Tambah Dari ]')
+        print('[1] Saran Teman')
+        print('[2] Scrap Timeline')
+        print('[3] Target Friendlist')
+        x = input('Pilih : ')
+        print('')
+        if   x in ['1','01','a']:
+            print('[ Seleksi Berdasarkan ]')
+            print('[1] Mutual')
+            print('[2] Gender')
+            y = input('Pilih : ')
+            print('')
+            z = input('Akun Laki/Perempuan [l/p] : ').lower()
+            print('')
+            if z in ['1','l','m','laki','men']: self.gender_pilihan = 'MALE'
+            elif z in ['2','p','w','perempuan','women']: self.gender_pilihan = 'FEMALE'
+            else: print('Isi Yang Benar!'); exit()
+            r = requests.Session()
+            url = 'https://www.facebook.com'
+            req = bs(r.get(url,headers=headers_get(),cookies={'cookie':self.cookie}).content,'html.parser')
+            dta = GetData(req)
+            dta.update({'fb_api_caller_class':'RelayModern','server_timestamps':True})
+            if   y in ['1','01','a']: pass
+            elif y in ['2','02','b']: self.Suggestion(r,dta,2,None)
+        elif x in ['2','02','b']: pass
+        elif x in ['3','03','c']: pass
+        else: print('Isi Yang Benar!'); exit()
+
+    def Suggestion(self,r,dta,type,cursor):
+        try:
+            dta.update({
+                'fb_api_req_friendly_name':'FriendingCometPYMKPanelPaginationQuery',
+                'variables':json.dumps({"count":30,"cursor":cursor,"location":"FRIENDS_CENTER","scale":1.5}),
+                'doc_id':'7426902770683771'})
+            pos = r.post('https://www.facebook.com/api/graphql/',data=dta,headers=headers_post(),cookies={'cookie':self.cookie}).json()
+            with ThreadPoolExecutor(max_workers=5) as TPE:
+                for x in pos['data']['viewer']['people_you_may_know']['edges']:
+                    try:
+                        id = x['node']['id']
+                        nm = x['node']['name']
+                        if type == 2:
+                            TPE.submit(self.ScrapGender,id)
+                    except Exception as e: pass
+            try:
+                cur = pos['data']['viewer']['people_you_may_know']['page_info']['end_cursor']
+                end = pos['data']['viewer']['people_you_may_know']['page_info']['has_next_page']
+                if end: self.Suggestion(r,dta,type,cur)
+                else: pass
+            except Exception as e: pass
+        except Exception as e: pass
+
+    def ScrapGender(self,id):
+        try:
+            r = requests.Session()
+            req = bs(r.get(f'https://www.facebook.com/{id}',headers=headers_get()).content,'html.parser')
+            gd = re.search('"gender":"(.*?)"',str(req)).group(1)
+            if gd == self.gender_pilihan: self.Add(id)
+            else: self.skip += 1
+            #print('%s|%s|%s'%(id,nm,gd))
+        except Exception as e: pass
+        print('\rSkip:%s Success:%s Failed:%s    '%(str(self.skip),str(self.success),str(self.failed)),end=''); sys.stdout.flush()
+
+    def Add(self,target):
+        r = requests.Session()
+        url = 'https://www.facebook.com'
+        req = bs(r.get(url,headers=headers_get(),cookies={'cookie':self.cookie}).content,'html.parser')
+        dta = GetData(req)
+        var = {
+            "input":{
+                "attribution_id_v2":"ProfileCometTimelineListViewRoot.react,comet.profile.timeline.list,via_cold_start,1700060250257,939817,190055527696468,",
+                "friend_requestee_ids":[target],
+                "refs":[None],
+                "source":"profile_button",
+                "warn_ack_for_ids":[],
+                "actor_id":dta['__user'],
+                "client_mutation_id":"1"},
+            "scale":1}
+        dta.update({
+            'fb_api_caller_class':'RelayModern',
+            'fb_api_req_friendly_name':'FriendingCometFriendRequestSendMutation',
+            'variables':json.dumps(var),
+            'server_timestamps':True,
+            'doc_id':'7033797416660129'})
+        pos = r.post('https://www.facebook.com/api/graphql/',data=dta,headers=headers_post(),cookies={'cookie':self.cookie}).json()
+        if 'friend_requestees' in str(pos) and 'OUTGOING_REQUEST' in str(pos):
+            self.success += 1
+        else:
+            self.failed += 1
+
+#--> Trigger-
 if __name__ == '__main__':
     mod()
     geolocator()
@@ -734,7 +811,6 @@ if __name__ == '__main__':
 # https://www.facebook.com/profile.php?id={id_target}
 # https://www.facebook.com/api/graphql/
 
-
 # {"tab_key":"friends_all","id":"(.*?)"}
 # {"tab_key":"friends_mutual","id":"(.*?)"}
 # {"tab_key":"friends_recent","id":"(.*?)"}
@@ -747,3 +823,5 @@ if __name__ == '__main__':
 # {"tab_key":"followers","id":"(.*?)"}
 # {"tab_key":"following","id":"(.*?)"}
 # {"tab_key":"followers_engaged","id":"(.*?)"}
+    
+# 100064626647103
